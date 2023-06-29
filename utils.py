@@ -143,8 +143,8 @@ def get_hpf_dataset(data_path, filter, dataset):
             print("HPF image is not exist.")
     elif filter == 'lf':
         if dataset == 'CIFAR10':
-            mean = [0.1703, 0.1860, 0.1043]
-            std = [0.3280, 0.3302, 0.2405]
+            mean = [0.1703, 0.1703, 0.1703]
+            std = [0.3280, 0.3280, 0.3280]
             transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
             dst_train_hpf = torchvision.datasets.ImageFolder(root=data_path + "/cifar10_lf", transform = transform)
         elif dataset == 'CIFAR100':
@@ -152,6 +152,20 @@ def get_hpf_dataset(data_path, filter, dataset):
             std = [0.3080, 0.3067, 0.2126]
             transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
             dst_train_hpf = torchvision.datasets.ImageFolder(root=data_path + "/cifar100_lf", transform = transform)
+        else:
+            print("HPF image is not exist.")
+            
+    elif filter == 'lfa':
+        if dataset == 'CIFAR10':
+            mean = [0.1703, 0.1860, 0.1043]
+            std = [0.3280, 0.3302, 0.2405]
+            transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
+            dst_train_hpf = torchvision.datasets.ImageFolder(root=data_path + "/cifar10_lfa", transform = transform)
+        elif dataset == 'CIFAR100':
+            mean = [0.1570, 0.1570, 0.1570]
+            std = [0.3080, 0.3080, 0.3080]
+            transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
+            dst_train_hpf = torchvision.datasets.ImageFolder(root=data_path + "/cifar100_lfa", transform = transform)
         else:
             print("HPF image is not exist.")
             

@@ -9,7 +9,7 @@ from torchvision.utils import save_image
 import torchvision
 from torchvision import transforms
 from utils import get_loops, get_dataset, get_network, get_eval_pool, evaluate_synset, get_daparam, match_loss, get_time, TensorDataset, epoch, DiffAugment, ParamDiffAug, get_hpf_dataset
-from gen_hpf_im import mk_cifar10_dog, mk_cifar100_dog, mk_cifar10_lf, mk_cifar100_lf
+from gen_hpf_im import mk_cifar10_dog, mk_cifar100_dog, mk_cifar10_lf, mk_cifar100_lf, mk_cifar10_lfa, mk_cifar100_lfa
 
 
 def main():
@@ -71,6 +71,15 @@ def main():
         elif args.dataset == 'CIFAR100':
             if not os.path.exists(args.data_path + '/cifar100_lf'):
                 mk_cifar100_lf(args.data_path, dst_train, num_classes)
+        else:
+            print("There is no hpf dataset.")
+    elif args.filter == 'lfa':
+        if args.dataset == 'CIFAR10':
+            if not os.path.exists(args.data_path + '/cifar10_lfa'):
+                mk_cifar10_lfa(args.data_path, dst_train, num_classes)
+        elif args.dataset == 'CIFAR100':
+            if not os.path.exists(args.data_path + '/cifar100_lfa'):
+                mk_cifar100_lfa(args.data_path, dst_train, num_classes)
         else:
             print("There is no hpf dataset.")
     elif args.filter == 'none':
